@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccodere <ccodere@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ccodere <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 11:37:47 by ccodere           #+#    #+#             */
-/*   Updated: 2024/08/10 11:42:08 by ccodere          ###   ########.fr       */
+/*   Created: 2023/11/08 10:11:10 by ccodere           #+#    #+#             */
+/*   Updated: 2023/11/29 12:35:14 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void	*ft_memset(void *byte, int c, size_t len)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	unsigned char	*ptr;
+	unsigned int	i;
 
-	ptr = byte;
-	if (byte == NULL)
-		return (NULL);
-	while (len--)
-		*ptr++ = (unsigned char)c;
-	return (byte);
+	i = 0;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }

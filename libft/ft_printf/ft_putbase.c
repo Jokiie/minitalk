@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libftprintf.h"
 
 int	ft_putbase(long n, int base)
 {

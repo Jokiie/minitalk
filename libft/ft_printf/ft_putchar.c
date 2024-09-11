@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 13:15:55 by ccodere           #+#    #+#             */
-/*   Updated: 2024/02/28 13:15:55 by ccodere          ###   ########.fr       */
+/*   Created: 2024/02/28 13:17:05 by ccodere           #+#    #+#             */
+/*   Updated: 2024/02/28 13:17:05 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libftprintf.h"
 
-int	ft_putstr(char *str)
+int	ft_putchar(int c)
 {
-	int	count;
-
-	count = 0;
-	if (str == NULL)
-		return (write(1, "(null)", 6));
-	while (*str != '\0')
-	{
-		ft_putchar((int)*str);
-		++count;
-		++str;
-	}
-	return (count);
+	return (write(1, &c, 1));
 }

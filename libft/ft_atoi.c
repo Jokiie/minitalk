@@ -6,12 +6,14 @@
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 09:58:04 by ccodere           #+#    #+#             */
-/*   Updated: 2024/08/01 13:03:18 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/04 00:13:40 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
-
+#include "libft.h"
+// Example
+// char str[] = "123";
+// int res = ft_atoi(str);
 static int	ft_isspace(int c)
 {
 	return (c == '\t' || c == '\v' || c == '\n'
@@ -28,7 +30,7 @@ int	ft_atoi(const char *str)
 	sign = 1;
 	i = 0;
 	if (!str)
-		return ('\0');
+		return (0);
 	while (ft_isspace(str[i]))
 		i++;
 	if (str[i] == '-')

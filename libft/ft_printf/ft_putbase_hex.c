@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libftprintf.h"
 
 int	ft_putbase_hex(long n, int uppercase)
 {

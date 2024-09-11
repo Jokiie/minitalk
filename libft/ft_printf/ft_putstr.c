@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccodere <ccodere@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 13:16:22 by ccodere           #+#    #+#             */
-/*   Updated: 2024/02/28 13:16:22 by ccodere          ###   ########.fr       */
+/*   Created: 2024/02/28 13:15:55 by ccodere           #+#    #+#             */
+/*   Updated: 2024/02/28 13:15:55 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libftprintf.h"
 
-char	*ft_itoa_base(unsigned long value, char *buffer, int base)
+int	ft_putstr(char *str)
 {
-	const char		*chars;
-	char			*array;
-	unsigned long	temp;
-	int				len;
+	int	count;
 
-	chars = "0123456789abcdef";
-	array = buffer;
-	temp = value;
-	len = 0;
-	while (temp != 0)
+	count = 0;
+	if (str == NULL)
+		return (write(1, "(null)", 6));
+	while (*str != '\0')
 	{
-		temp /= base;
-		len++;
+		ft_putchar((int)*str);
+		++count;
+		++str;
 	}
-	array += len;
-	*array = '\0';
-	while (value != 0)
-	{
-		--array;
-		*array = chars[value % base];
-		value /= base;
-	}
-	return (array);
+	return (count);
 }
