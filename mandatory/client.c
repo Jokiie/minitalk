@@ -6,7 +6,7 @@
 /*   By: ccodere <ccodere@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 22:24:23 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/11 13:45:41 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/11 15:17:14 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,8 @@ static void	ft_send_msg(int server_pid, char *msg)
 	ft_send_byte(server_pid, '\0');
 }
 
-static void	ft_signals_handler(int sig, siginfo_t *siginfo, void *context)
-{
-	(void)context;
-	(void)siginfo;
-	if (sig == SIGUSR1)
-	{
-		ft_printf(GREEN "Server received the message\n" RESET);
-		exit(EXIT_SUCCESS);
-	}
-}
-
 int	main(int argc, char *argv[])
 {
-	struct sigaction	sa;
 	int					pid;
 
 	pid = 0;
@@ -75,11 +63,6 @@ int	main(int argc, char *argv[])
 		ft_printf(RED "Error\n" GREY "Invalid PID.\n" RESET);
 		return (EXIT_FAILURE);
 	}
-	ft_memset(&sa, 0, sizeof(sa));
-	sa.sa_sigaction = ft_signals_handler;
-	sa.sa_flags = SA_SIGINFO;
-	sigemptyset(&sa.sa_mask);
-	sigaction(SIGUSR1, &sa, NULL);
 	ft_send_msg(pid, argv[2]);
 	return (EXIT_SUCCESS);
 }

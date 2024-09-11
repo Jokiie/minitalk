@@ -6,7 +6,7 @@
 /*   By: ccodere <ccodere@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 22:33:48 by ccodere           #+#    #+#             */
-/*   Updated: 2024/09/11 14:21:42 by ccodere          ###   ########.fr       */
+/*   Updated: 2024/09/11 15:08:24 by ccodere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	*ft_create_buffer(char *buffer, size_t buffer_size)
 	return (buffer);
 }
 
-static void	ft_assemble_msg(int client_pid, unsigned char *byte)
+static void	ft_assemble_msg(unsigned char *byte)
 {
 	static size_t	i = 0;
 	static size_t	buffer_size = 10240;
@@ -40,7 +40,6 @@ static void	ft_assemble_msg(int client_pid, unsigned char *byte)
 	g_buffer[i++] = (char)*byte;
 	if ((char)*byte == '\0')
 	{
-		kill(client_pid, SIGUSR1);
 		write(1, g_buffer, i);
 		ft_reset_buffer(&g_buffer);
 		i = 0;
@@ -78,7 +77,7 @@ static void	ft_signals_handler(int sig, siginfo_t *siginfo, void *context)
 		byte |= (1 << bit_index++);
 	if (bit_index == 8)
 	{
-		ft_assemble_msg(client_pid, &byte);
+		ft_assemble_msg(&byte);
 		bit_index = 0;
 		byte = 0;
 	}
