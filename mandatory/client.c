@@ -56,6 +56,7 @@ int	main(int argc, char *argv[])
 	{
 		ft_printf(RED "Error\n" RESET);
 		ft_printf(GREY "Usage: ./client <server pid> <message>\n" RESET);
+		return (EXIT_FAILURE);
 	}
 	pid = ft_atoi(argv[1]);
 	if (pid <= 0 || ft_str_isdigit(argv[1]) == FALSE)
